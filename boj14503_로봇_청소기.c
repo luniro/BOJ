@@ -26,13 +26,13 @@ void oper(void)
 {
 	int i, nr, nc;
 
-	while (1)
+	while (a[r][c] != 1)
 	{
 		a[r][c] = -1;
 
 		for (i = 0; i < 4; ++i)
 		{
-			d = (d + 3) % 4;
+			d = --d & 3;
 			nr = r + dr[d];
 			nc = c + dc[d];
 
@@ -43,19 +43,12 @@ void oper(void)
 				cnt++;
 				break;
 			}
-			else
-			{
-				continue;
-			}
 		}
 
 		if (i == 4)
 		{
 			r -= dr[d];
 			c -= dc[d];
-
-			if (a[r][c] == -1) continue;
-			else break;
 		}
 	}
 }
